@@ -15,14 +15,10 @@ for ROIindex=1:length(ROI)
         ROIdata{ROIindex} = deResoloutionizeRS(strucMat,OriginalHeader);
     end
 end
-
-
-
-
 end
 
 function [ROI,roiList] = GetROIInputs()
-    roiList = ["PTV Total","Bladder","Rectum","L Femur","R Femur","Rectal Wall"];
+    roiList = ["PTV Total","Body","Bladder","Rectum","L Femur","R Femur","Rectal Wall"];
     ROI = zeros(size(roiList));
     for m=1:size(roiList,2)
         message = sprintf('Please Input ROI Number refered to %s ; leave EMPTY if none:',roiList(m));
