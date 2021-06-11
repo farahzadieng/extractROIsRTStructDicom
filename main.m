@@ -35,4 +35,7 @@ CT_Header.columns2 = size(CT_Image2,2);
 [ROIdata,roiList,SkippedROIs] = RSImage(CT_Image,MaskData,roiList,CT_Header);
 
 writeNiftiFiles(CT_Image2,CT_Header,ROIdata,roiList)
+disp('------------------')
+disp('       DONE')
+disp('------------------')
 rmpath(CurrentAddress)
