@@ -32,7 +32,7 @@ CT_Header.columns2 = size(CT_Image2,2);
 %Get masked roi's based on original pixel size
 [MaskData,roiList] = MaskStructures(CT,RS);
 %deresolutionize RS images and Make desired Images 
-[ROIdata,roiList,SkippedROIs] = RSImage(CT_Image,MaskData,roiList,CT_Header);
+[ROIdata,roiList] = RSImage(CT_Image,MaskData,roiList,CT_Header);
 
 writeNiftiFiles(CT_Image2,CT_Header,ROIdata,roiList)
 disp('------------------')

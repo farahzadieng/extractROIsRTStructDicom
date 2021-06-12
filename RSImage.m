@@ -1,4 +1,4 @@
-function [ROIdata,roiList,SkippedROIs] = RSImage(CTRefrenceImage,MaskData,ROIList,OriginalHeader)
+function [ROIdata,roiList] = RSImage(CTRefrenceImage,MaskData,ROIList,OriginalHeader)
 
 printROIList(ROIList)
 [ROI,roiList] = GetROIInputs;
@@ -7,7 +7,7 @@ for ROIindex=1:length(ROI)
     strucMat = zeros(size(CTRefrenceImage));
     if ROI(ROIindex) == 0
         ROIdata{ROIindex} = strucMat;
-        SkippedROIs = ROIindex;
+%         SkippedROIs = ROIindex;
     else
         for j=1:size(strucMat,3)
             strucMat(:,:,j) = MaskData{ROI(ROIindex)}{j};
