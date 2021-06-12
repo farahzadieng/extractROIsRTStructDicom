@@ -19,13 +19,9 @@ end
 
 [CT_Image] = deArtifactCTSeeding(CT_Image,Struct_Image);
 saveCT(CT_Image(cutPosition(1):cutPosition(2),cutPosition(3):cutPosition(4),:),CT_Header.SliceSpacing2,CT_Header.PixelSpacing2,'CT_cropped.nii')
-while size(CT_Image,1) < 512 || size(CT_Image,2) < 512 
-    if size(CT_Image,1) < 512
-        CT_Image(:,end+1,:) = 0;
-    elseif size(CT_Image,2) < 512 
-        CT_Image(end+1,:,:) = 0;
-    end
-end
+if size(CT_Image,1) < 512
+    
+elseif size(CT_Image,2) < 512 
 saveCT(CT_Image,CT_Header.SliceSpacing2,CT_Header.PixelSpacing2,'CT_512x512.nii')
 
 for i=3:length(ROInames)
@@ -35,13 +31,7 @@ for i=3:length(ROInames)
         continue
     end
 end
-while size(Struct_Image{2},1) < 512 || size(Struct_Image{2},2) < 512 
-    if size(Struct_Image{2},1) < 512
-        Struct_Image{2}(:,end+1,:) = 0;
-    elseif size(Struct_Image{2},2) < 512 
-        Struct_Image{2}(end+1,:,:) = 0;
-    end
-end
+
 saveStruct(Struct_Image{2},CT_Header.SliceSpacing2,CT_Header.PixelSpacing2,"Body_512x512.nii")
 end
 
