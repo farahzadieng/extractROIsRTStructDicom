@@ -1,4 +1,4 @@
-function [dcm_main2] = GetDicomList(CurrentAddress)
+function [dcm_main] = GetDicomList(CurrentAddress)
 
 
 Address = input('Enter main DICOM Directory Address:\n','s');
@@ -10,11 +10,11 @@ dcm_main = dir('*.dcm');
 disp('Enter other Dictories to scan for dicom; Enter NO to skip')
 Address2 = input('Enter main DICOM Directory Address:\n','s');
 
-if lower(Address2) ~= "no"
+if lower(Address2) ~= "no" && Address2 ~= ""
 	cd(Address2)
 	dcm_sec = dir('*.dcm');
 	[dcm_sec] = AddFields(dcm_sec);
-	[dcm_main2] = JoinStructs(dcm_main,dcm_sec);
+	[dcm_main] = JoinStructs(dcm_main,dcm_sec);
 end
 
 

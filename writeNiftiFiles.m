@@ -35,9 +35,15 @@ end
 disp('fix ct size')
 saveCT(CT_Image,CT_Header.SliceSpacing2,CT_Header.PixelSpacing2,'CT_512x512.nii')
 disp('not crppped')
+fileID = fopen('D:\Matlab\Projects\extractRS\sizeInf.txt','w');
+fprintf(fileID,'row ind is between %u and %u \ncol ind is between %u and %u \n',cutPosition(1),cutPosition(2),cutPosition(3),cutPosition(4));
+fprintf(fileID,'Size is %ux%u\n',(cutPosition(2)-cutPosition(1)+1),(cutPosition(4)-cutPosition(3)+1));
+fprintf(fileID,'=======================================\n=======================================\n');
+fclose(fileID);
 for i=3:length(ROInames)
     if any(any(any(Struct_Image{i}))) ~= 0
         saveStruct(Struct_Image{i}(cutPosition(1):cutPosition(2),cutPosition(3):cutPosition(4),:),CT_Header.SliceSpacing2,CT_Header.PixelSpacing2,ROInames(i))
+        
     else
         continue
     end
