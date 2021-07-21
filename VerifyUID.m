@@ -23,6 +23,11 @@ end
 function GetSturctures(info)
 for j=1:length(fieldnames(info.ROIContourSequence))
     disp(['        ',num2str(j),') ',eval(['info.StructureSetROISequence.Item_',num2str(j),'.ROIName'])])
+    x = eval(['info.StructureSetROISequence.Item_',num2str(j),'.ROIName']);
+    if lower(x) == "body"
+        y = length(fieldnames(eval(['info.ROIContourSequence.Item_',num2str(j),'.ContourSequence'])));
+        disp(['body length is :',num2str(y)])
+    end
 end
 end
 
